@@ -1,4 +1,5 @@
 
+
 export enum FieldType {
   TextField = 'TextField',
   TextareaField = 'TextareaField',
@@ -317,3 +318,11 @@ export type UrlParameterMapping = {
 export type FormSettings = {
     urlParameterMapping: UrlParameterMapping[];
 }
+
+export type SavedForm = {
+  id: string;
+  name: string;
+  fields: FormFieldInstance[];
+  formSettings: FormSettings;
+  savedAt: string; // ISO string
+};

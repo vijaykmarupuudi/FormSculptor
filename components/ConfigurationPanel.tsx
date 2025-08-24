@@ -1,6 +1,6 @@
 import React, { useContext, useState, useMemo } from 'react';
 import { FormBuilderContext } from '../App';
-import { FormFieldInstance, FieldType, FieldOption, TextFieldSubtype, TabsField, GroupField, ImageField, HtmlField, FileUploadField, RatingField, SliderField, SectionBreak, CalculatedField, MatrixField, MatrixCellInputType, MatrixRow, MatrixCol, LookupField, PaymentField, PaymentGateway, RepeaterField, LogicRule, LogicAction, ConditionGroup, LogicCondition, CalculatedFieldFormat, UrlParameterMapping } from '../types';
+import { FormFieldInstance, FieldType, FieldOption, TextFieldSubtype, TabsField, GroupField, ImageField, HtmlField, FileUploadField, RatingField, SliderField, SectionBreak, CalculatedField, MatrixField, MatrixCellInputType, MatrixRow, MatrixCol, LookupField, PaymentField, PaymentGateway, RepeaterField, LogicRule, LogicAction, ConditionGroup, LogicCondition, CalculatedFieldFormat, UrlParameterMapping, FormSettings } from '../types';
 import { Input, Label, Switch, Textarea, Button, Select } from './ui';
 import { FORM_ELEMENTS } from '../constants';
 
