@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FormSculptor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'brand-primary': '#4f46e5', // indigo-600
+              'brand-secondary': '#7c3aed', // violet-600
+              'slate-850': '#1e293b', // A custom darker slate
+              'indigo': {
+                '50': '#eef2ff', '100': '#e0e7ff', '200': '#c7d2fe', '300': '#a5b4fc',
+                '400': '#818cf8', '500': '#6366f1', '600': '#4f46e5', '700': '#4338ca',
+                '800': '#3730a3', '900': '#312e81', '950': '#1e1b4b'
+              },
+            },
+             typography: ({ theme }) => ({
+              invert: {
+                css: {
+                  '--tw-prose-body': theme('colors.slate[300]'),
+                  '--tw-prose-headings': theme('colors.slate[100]'),
+                  '--tw-prose-lead': theme('colors.slate[400]'),
+                  '--tw-prose-links': theme('colors.indigo.400'),
+                  '--tw-prose-bold': theme('colors.white'),
+                  '--tw-prose-counters': theme('colors.slate[400]'),
+                  '--tw-prose-bullets': theme('colors.slate[600]'),
+                  '--tw-prose-hr': theme('colors.slate[700]'),
+                  '--tw-prose-quotes': theme('colors.slate[200]'),
+                  '--tw-prose-quote-borders': theme('colors.slate[700]'),
+                  '--tw-prose-captions': theme('colors.slate[400]'),
+                  '--tw-prose-code': theme('colors.white'),
+                  '--tw-prose-pre-code': theme('colors.slate[300]'),
+                  '--tw-prose-pre-bg': theme('colors.slate[900]'),
+                  '--tw-prose-th-borders': theme('colors.slate[600]'),
+                  '--tw-prose-td-borders': theme('colors.slate[700]'),
+                },
+              },
+            }),
+          }
+        },
+         plugins: [
+          require('@tailwindcss/typography'),
+        ],
+      }
+    </script>
+  <script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://esm.sh/react-dom@^19.1.1/",
+    "react/": "https://esm.sh/react@^19.1.1/",
+    "react": "https://esm.sh/react@^19.1.1",
+    "@dnd-kit/sortable": "https://esm.sh/@dnd-kit/sortable@^10.0.0",
+    "@dnd-kit/core": "https://esm.sh/@dnd-kit/core@^6.3.1",
+    "@dnd-kit/utilities": "https://esm.sh/@dnd-kit/utilities@^3.2.2",
+    "immer": "https://esm.sh/immer@^10.1.1"
+  }
+}
+</script>
+</head>
+  <body class="bg-slate-950 text-slate-200">
+    <div id="root"></div>
+    <script>
+      // A little hack to get tailwind typography plugin working with the CDN
+      const newScript = document.createElement('script');
+      newScript.src = "https://cdn.tailwindcss.com?plugins=typography";
+      document.head.appendChild(newScript);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,5 @@
+{
+  "name": "AI Form Builder",
+  "description": "An intelligent form builder application that allows users to create, customize, and manage forms using a drag-and-drop interface with AI-powered suggestions and configuration options.",
+  "requestFramePermissions": []
+}
