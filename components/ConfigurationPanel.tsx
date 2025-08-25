@@ -1,3 +1,4 @@
+
 import React, { useContext, useState, useMemo } from 'react';
 import { FormBuilderContext } from '../App';
 import { FormFieldInstance, FieldType, FieldOption, TextFieldSubtype, TabsField, GroupField, ImageField, HtmlField, FileUploadField, RatingField, SliderField, SectionBreak, CalculatedField, MatrixField, MatrixCellInputType, MatrixRow, MatrixCol, LookupField, PaymentField, PaymentGateway, RepeaterField, LogicRule, LogicAction, ConditionGroup, LogicCondition, CalculatedFieldFormat, UrlParameterMapping, FormSettings } from '../types';
@@ -81,15 +82,15 @@ const DesignProperties = ({ field }: { field: FormFieldInstance }) => {
             <div className="grid grid-cols-3 gap-2 items-center">
                  <div>
                     <Label htmlFor="backgroundColor">Bg Color</Label>
-                    <Input id="backgroundColor" type="color" value={field.styles?.backgroundColor as string || '#1f2937'} onChange={e => handleStyleChange('backgroundColor', e.target.value)} className="p-1 h-10" />
+                    <Input id="backgroundColor" type="color" value={field.styles?.backgroundColor as string || '#1e293b'} onChange={e => handleStyleChange('backgroundColor', e.target.value)} className="p-1 h-10 bg-slate-800" />
                 </div>
                 <div>
                     <Label htmlFor="borderColor">Border</Label>
-                    <Input id="borderColor" type="color" value={field.styles?.borderColor as string || '#334155'} onChange={e => handleStyleChange('borderColor', e.target.value)} className="p-1 h-10" />
+                    <Input id="borderColor" type="color" value={field.styles?.borderColor as string || '#334155'} onChange={e => handleStyleChange('borderColor', e.target.value)} className="p-1 h-10 bg-slate-800" />
                 </div>
                 <div>
                     <Label htmlFor="color">Text</Label>
-                    <Input id="color" type="color" value={field.styles?.color as string || '#f1f5f9'} onChange={e => handleStyleChange('color', e.target.value)} className="p-1 h-10" />
+                    <Input id="color" type="color" value={field.styles?.color as string || '#f1f5f9'} onChange={e => handleStyleChange('color', e.target.value)} className="p-1 h-10 bg-slate-800" />
                 </div>
             </div>
         </PropertyGroup>
@@ -665,6 +666,12 @@ const FormSettingsPanel = () => {
          <aside className="w-80 bg-slate-900 p-6 overflow-y-auto border-l border-slate-800">
              <h2 className="text-lg font-bold text-slate-200 mb-6">Form Settings</h2>
              <div className="space-y-8">
+                 <PropertyGroup title="General">
+                    <div>
+                        <Label htmlFor="formName">Form Name</Label>
+                        <Input id="formName" value={formSettings.name} onChange={e => setFormSettings({...formSettings, name: e.target.value})} />
+                    </div>
+                 </PropertyGroup>
                  <PropertyGroup title="Data Pre-Population">
                      <div className="p-3 bg-slate-850 rounded-md space-y-3">
                          <h4 className="text-sm font-semibold text-slate-300">URL Parameter Mapping</h4>

@@ -1,17 +1,21 @@
+
 import React from 'react';
 import { SavedForm } from '../types';
 import { Button } from './ui';
 
 const FileIcon = () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>;
 const ClockIcon = () => <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>;
+const PlusSquareIcon = () => <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M8 12h8"/><path d="M12 8v8"/></svg>;
+
 
 type HistoryViewProps = {
     forms: SavedForm[];
     onLoad: (formId: string) => void;
     onDelete: (formId: string) => void;
+    onNew: () => void;
 };
 
-export const HistoryView = ({ forms, onLoad, onDelete }: HistoryViewProps) => {
+export const HistoryView = ({ forms, onLoad, onDelete, onNew }: HistoryViewProps) => {
 
     const formatDate = (isoString: string) => {
         return new Date(isoString).toLocaleString(undefined, {
@@ -22,18 +26,21 @@ export const HistoryView = ({ forms, onLoad, onDelete }: HistoryViewProps) => {
 
     return (
         <div className="flex-1 p-8 bg-slate-950 overflow-y-auto">
-            <div className="max-w-4xl mx-auto">
-                <h2 className="text-2xl font-bold text-slate-100 mb-6">My Saved Forms</h2>
+            <div className="max-w-5xl mx-auto">
+                <div className="flex justify-between items-center mb-6">
+                    <h2 className="text-2xl font-bold text-slate-100">My Forms</h2>
+                    <Button onClick={onNew}><PlusSquareIcon /><span>New Form</span></Button>
+                </div>
                 {forms.length > 0 ? (
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         {forms.map(form => (
                             <div key={form.id} className="bg-slate-900 rounded-lg shadow-lg p-5 flex flex-col justify-between border border-slate-800 hover:border-indigo-600 transition-colors">
                                 <div>
                                     <div className="flex items-start space-x-3 mb-3">
-                                        <div className="text-indigo-500 mt-1">
+                                        <div className="text-indigo-500 mt-1 shrink-0">
                                             <FileIcon />
                                         </div>
-                                        <h3 className="text-lg font-semibold text-slate-200 break-all">{form.name}</h3>
+                                        <h3 className="text-lg font-semibold text-slate-200 break-all">{form.formSettings.name}</h3>
                                     </div>
                                     <p className="text-sm text-slate-500 flex items-center space-x-2">
                                         <ClockIcon />
@@ -50,7 +57,7 @@ export const HistoryView = ({ forms, onLoad, onDelete }: HistoryViewProps) => {
                 ) : (
                     <div className="text-center py-20 border-2 border-dashed border-slate-800 rounded-lg">
                         <h3 className="text-xl font-semibold text-slate-400">No Saved Forms</h3>
-                        <p className="text-slate-500 mt-2">Click "New Form" and "Save" in the builder to get started.</p>
+                        <p className="text-slate-500 mt-2">Click "New Form" to get started.</p>
                     </div>
                 )}
             </div>
